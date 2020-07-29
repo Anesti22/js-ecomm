@@ -38,6 +38,18 @@ class UsersRepository {
         return crypto.randomBytes(4).toString('hex');
     }
 
+    async getOne(id){
+        const records = await this.getAll();
+        return records.find( record => record.id === id);
+    }
+
+    async delete(id) {
+        const records = await this.getAll();
+        const filterRecords = records.filter(record => record.id != id);
+
+        await this.writeAll(filterRecords);
+    }
+
 }
 
 
@@ -45,11 +57,8 @@ const test = async () => {
 
     const repo =  new UsersRepository('users.json');
 
-    await repo.create({email: 'test@test.com', password: 'password'})
+    await repo.delete('ce11fb3c');
 
-    const users = await repo.getAll();
-
-   console.log(users);
 }
 
 test();
