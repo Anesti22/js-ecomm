@@ -17,16 +17,17 @@ class UsersRepository {
     }
 
     async getAll() {
-
         return JSON.parse(await fs.promises.readFile(this.filename, {encoding: 'utf8'}));
-
     }
 
     async create(atters) {
         const records = await this.getAll();
         records.push(atters);
+        await this.writeAll(records);
+    }
 
-        await fs.promises.writeFile(this.filename, JSON.stringify(records));
+    async writeAll(records) {
+        await fs.promises.writeFile(this.filename, JSON.stringify(records, null, 2));
     }
 }
 
@@ -35,7 +36,7 @@ const test = async () => {
 
     const repo =  new UsersRepository('users.json');
 
-    repo.create({email: 'test@test.com', password: 'password'})
+    await repo.create({email: 'test@test.com', password: 'password'})
 
     const users = await repo.getAll();
 
