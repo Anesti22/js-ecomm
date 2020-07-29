@@ -1,5 +1,6 @@
-const { json } = require('express');
+// const { json } = require('express');
 const fs = require('fs');
+const crypto = require('crypto');
 
 class UsersRepository {
     constructor(filename) {
@@ -21,6 +22,9 @@ class UsersRepository {
     }
 
     async create(atters) {
+
+        atters.id = this.randomId();
+
         const records = await this.getAll();
         records.push(atters);
         await this.writeAll(records);
@@ -29,6 +33,11 @@ class UsersRepository {
     async writeAll(records) {
         await fs.promises.writeFile(this.filename, JSON.stringify(records, null, 2));
     }
+
+    randomId() {
+        return crypto.randomBytes(4).toString('hex');
+    }
+
 }
 
 
