@@ -1,4 +1,3 @@
-// const { json } = require('express');
 const fs = require('fs');
 const crypto = require('crypto');
 
@@ -28,6 +27,8 @@ class UsersRepository {
         const records = await this.getAll();
         records.push(atters);
         await this.writeAll(records);
+
+        return atters;
     }
 
     async writeAll(records) {
