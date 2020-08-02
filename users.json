@@ -11,5 +11,10 @@
     "email": "test2@test.com",
     "password": "pass",
     "id": "89fc836b"
+  },
+  {
+    "email": "test4@test.com",
+    "password": "nesti2",
+    "id": "a26d3eb6"
   }
 ]
