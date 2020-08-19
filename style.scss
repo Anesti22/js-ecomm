@@ -1,0 +1,17 @@
+
+/*================ Custom Styles ================*/
+
+.shopify-section-header {
+    .border-bottom {
+        border-bottom: 0px solid #ebebeb;
+    }
+}
+
+.hero__overlay {
+    &:before {
+        content: '';
+        background: linear-gradient(to bottom, #fff 0%, rgb(255, 255, 255, 0%) 8%, rgb(238, 238, 238, 0%) 0, rgb(255, 255, 255, 0%) 215%)!important;
+        opacity: 1;
+    }
+}
+
