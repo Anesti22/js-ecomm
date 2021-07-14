@@ -58,7 +58,6 @@ router.post('/signin', async (req, res) => {
 
     const user = await usersRepo.getOneBy({email});
 
- 
     if(!user) {
         return res.send('Email not found!');
     }
