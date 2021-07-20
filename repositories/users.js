@@ -7,6 +7,7 @@ const scrypt = util.promisify(crypto.scrypt);
 
 class UsersRepository {
     constructor(filename) {
+		
         if(!filename) {
             throw new Error('Creating a repository requires a filename');
         }
